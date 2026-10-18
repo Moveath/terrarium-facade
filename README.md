@@ -6,7 +6,12 @@ Assignment 4 for Software Design Patterns.
 
 This Java console program uses the Facade pattern to take care of a terrarium.
 
-The subsystem has four classes: `WaterTank` stores water, `Soil` tracks moisture and calculates the required water, `WateringSystem` takes water from the tank and waters the soil, and `LightingSystem` controls the light brightness.
+The subsystem has four classes:
+
+- `WaterTank` stores water and checks that there is enough for watering.
+- `Soil` tracks moisture and calculates how much water is needed.
+- `WateringSystem` takes water from the tank and waters the soil.
+- `LightingSystem` controls the light brightness from 0 to 100%.
 
 `TerrariumFacade` provides three methods: `refillWaterTank()`, `startDay()`, and `endDay()`. It waters the plants before turning on the light. `Main` uses only the facade. The subsystem classes do not depend on the facade and can also be used directly.
 
@@ -25,8 +30,18 @@ In this simple model, soil starts at 30% moisture and 10 ml of water adds 1 perc
 Open a terminal in this folder and run with a Java JDK:
 
 ```sh
-javac *.java
-java Main
+javac -d bin *.java
+java -cp bin Main
 ```
 
-The example adds 500 ml of water, uses 300 ml to reach 60% moisture, turns on the light, and then turns it off.
+Expected output:
+
+```text
+Added 500 ml to the water tank
+Starting terrarium care
+Water left in the tank: 200 ml
+Soil moisture: 60%
+Plants watered with 300 ml of water
+Terrarium light brightness: 70%
+Terrarium light is off
+```
